@@ -7,9 +7,19 @@
         "vscode": {
             "extensions": [
                 "rust-lang.rust-analyzer", // Updated to use rust-analyzer
-                "ms-azuretools.vscode-docker" // Added Docker extension
+                "ms-azuretools.vscode-docker", // Added Docker extension
+                "GitHub.copilot"
             ]
         }
     },
-    "postCreateCommand": "rustup update && rustup component add clippy && rustup component add rustfmt"
+    "postCreateCommand": [
+        "rustup update",
+        "rustup component add clippy",
+        "rustup component add rustfmt",
+        "brew tap cargo-lambda/cargo-lambda",
+        "brew install cargo-lambda",
+        "curl -Lo aws-sam-cli.zip https://github.com/aws/aws-sam-cli/releases/latest/download/aws-sam-cli-linux-x86_64.zip",
+        "unzip aws-sam-cli.zip -d sam-installation",
+        "sudo ./sam-installation/install"
+    ]
 }
